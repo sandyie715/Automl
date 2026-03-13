@@ -35,7 +35,6 @@ from sklearn.ensemble import (
     RandomForestClassifier, RandomForestRegressor,
     GradientBoostingClassifier, GradientBoostingRegressor,
     ExtraTreesClassifier, ExtraTreesRegressor,
-    AdaBoostClassifier, AdaBoostRegressor,
 )
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 from sklearn.naive_bayes import GaussianNB
@@ -161,7 +160,6 @@ def get_classifiers():
         "Random Forest":       RandomForestClassifier(n_estimators=100, random_state=42),
         "Gradient Boosting":   GradientBoostingClassifier(random_state=42),
         "Extra Trees":         ExtraTreesClassifier(n_estimators=100, random_state=42),
-        "AdaBoost":            AdaBoostClassifier(algorithm="SAMME", random_state=42),
         "KNN":                 KNeighborsClassifier(),
         "Naive Bayes":         GaussianNB(),
         "Linear SVC":          CalibratedClassifierCV(LinearSVC(max_iter=2000, random_state=42)),
@@ -177,7 +175,6 @@ def get_regressors():
         "Random Forest":     RandomForestRegressor(n_estimators=100, random_state=42),
         "Gradient Boosting": GradientBoostingRegressor(random_state=42),
         "Extra Trees":       ExtraTreesRegressor(n_estimators=100, random_state=42),
-        "AdaBoost":          AdaBoostRegressor(random_state=42),
         "KNN":               KNeighborsRegressor(),
         "Linear SVR":        LinearSVR(max_iter=2000, random_state=42),
     }
