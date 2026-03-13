@@ -574,6 +574,10 @@ async def upload_file(file: UploadFile = File(...)):
     sp   = TMP_UPLOAD / safe
     sp.parent.mkdir(parents=True, exist_ok=True)
     content = await file.read()
+
+    if len(content) > 20_000_000:
+        raise HTTPException(400, "CSV too large (20MB max)")
+
     sp.write_bytes(content)
     try:
         df = pd.read_csv(sp)
@@ -736,6 +740,7 @@ async def list_jobs():
     return {"jobs": docs}
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+app = FastAPI(title="AutoML Studio API", version="3.0")
